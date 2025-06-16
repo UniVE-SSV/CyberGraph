@@ -1,3 +1,6 @@
+# Branches
+* In the main branch you can find the most updated version of Bruno, otherwise if you switch to the `Fabio-version` branch you can find the first project version without some webapp and IoC functions
+
 # Project Files Structure
 * `webapp`: it's a *react* and *flask* project that utilizes the CVE graph database (inside they're both defined the *front* and *back* end);
 * `retrieve_data.py`: script used to retrieve all sort of info related to vulnetabilities (CNA, CVE, CWE, CAPEC);
