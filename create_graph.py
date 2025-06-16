@@ -3041,15 +3041,22 @@ class CyberGraph:
                 if("configurations" in cve["cve"]):
                     for configuration in cve["cve"]["configurations"]:
                         for node in configuration["nodes"]:
+                            lastProduct = None
+                            lastVendor = None
                             for cpe in node["cpeMatch"]:
                                 
                                 cpe_elements = cpe["criteria"].split(":")
 
-                                self.write_vendor_and_product({
-                                    "vendorName":cpe_elements[3],
-                                    "productName":cpe_elements[4],
-                                    "productType":("Application" if cpe_elements[2]=="a" else "Hardware" if cpe_elements[2]=="h" else "Operating Systems")
-                                })
+                                if(lastProduct is None or lastProduct != cpe_elements[4] or 
+                                   lastVendor is None or lastVendor != cpe_elements[3]):
+                                    lastProduct = cpe_elements[4]
+                                    lastVendor = cpe_elements[3]
+                                
+                                    self.write_vendor_and_product({
+                                        "vendorName":cpe_elements[3],
+                                        "productName":cpe_elements[4],
+                                        "productType":("Application" if cpe_elements[2]=="a" else "Hardware" if cpe_elements[2]=="h" else "Operating Systems")
+                                    })
 
                                 # TODO - At the moment the graph doesn't model the combination AND/OR of products
                                 # (es. CVE-2019-5163, CVE-2021-43803) or CVE-2017-20026 (where there's no "versionStartIncluding")
