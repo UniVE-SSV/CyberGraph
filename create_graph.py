@@ -3182,7 +3182,7 @@ class CyberGraph:
                         'techniques':[]
                     })
         for tactic in tactics_new:
-            techniques = mitre_attack_data.get_techniques_by_tactic(tactics_new[0].get('short-name'), "enterprise-attack", remove_revoked_deprecated=True)
+            techniques = mitre_attack_data.get_techniques_by_tactic(tactic.get('short-name'), "enterprise-attack", remove_revoked_deprecated=True)
             for tec in techniques:
                 for tec2 in tec.get('external_references'):
                     if tec2.get('source_name') == "mitre-attack":
