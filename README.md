@@ -7,7 +7,7 @@
 * `create_graph.py`: script that uses the files retrieved by the `retrieve_data.py` and creates a *Neo4j* graph database;
 
 # Prerequisite
-* Have installed locally *Neo4j Desktop* with *APOC* libraries;
+* Have installed locally *Neo4j Desktop* with *APOC* libraries, optionally on a Linux system with docker is possible to run the `launchDocker.sh` file to create the required neo4jDocker instance
 * *Node* and *npm* (by installing node you'll also get npm);
 * *Yarn* (after you've installed node, run `npm install --global yarn`)
 * *Python* then run `pip install -r requirements.txt` to install required libraries
